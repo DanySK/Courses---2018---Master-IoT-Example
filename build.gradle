@@ -1,0 +1,15 @@
+plugins {
+    id 'java'
+}
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    implementation 'com.typesafe.akka:akka-actor_2.12:2.5.16'
+    implementation 'com.typesafe.akka:akka-remote_2.12:2.5.16'
+    implementation 'com.github.ben-manes.caffeine:caffeine:2.6.2'
+    testCompile 'com.typesafe.akka:akka-testkit_2.12:2.5.16'
+    testCompile 'junit:junit:4.12'
+}
