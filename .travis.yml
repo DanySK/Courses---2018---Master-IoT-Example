@@ -6,12 +6,30 @@ jdk:
 - openjdk9
 - openjdk10
 
+env:
+  global:
+  - SURGE_LOGIN="danilo.pianini@gmail.com"
+  - secure: "IBYJGGMypSPX70ErUq9XI3E58fH5vs6qozhHJrtv/RCtNuHwPOuWiwOHw6rLieBd0HxElotXzaoj9vAHkGSSV2ib7E8JqvhDK7lNV0/JPHEvR2v+DY79pS0IZFHyBCECQUFta5m2MyTXwZpWRf9By0y7BKe9Ma8RDwVpgskUUNMPCd6MUcmvJ5CdXBSDhx6RDSsSoixWpi6BvLOKLvAM3IDmHyQ38v6s2gfK9tX2QHCm+6UPnZD6LpBeBRgk9Zl3ZGf+RswMDqX9y3M7Ukali8vom4EaQ0GMaAlTElWAVkC4WemYiPe3pAjZizO66gRNn+BjvkjteSgXno/Z1t4EI0X12v2QGDyp5Q8gZf1x8cU/TNSFZRtwv6/0D//g0QpeCnaeBOb4mWCoyfA+O5O7mifPuGRDhTGx1E3rELNswxlUcF4+BDsjbTb/o14VP9OACI3zhEuRIb4JZ2MUprHOZ4Xp75DS481g7i1geB9MH4jQ+pVW53JRhvalMIiY7VBQ+S6d51OLgkPjwtMGi8nrkkLkIDTXCzqxDWGad/84sxQUH4hsKlyyYnuw8L8H7VhlVUDWmR6B7LCewKr9waPQVLdWmnrddcmuucZT0GLDh71L1Jb15CqTD6lRGn3Kl2qURFU1pLyoio83xMwSTHf1qgoqLPavQyi2TORhttcPshg="
+
+install: true
+
+script:
+  - ./gradlew 
+  
 deploy:
-  provider: releases
-  api_key:
-    secure: FpedGUBOxQJk/UvbUK7znG6DgSnjf1lbick3CHEL7CktRCt3RTONdmC6tY5YeSFFqQY6uHGRvszV452UjA0+SBDUVLjIda6aPks38Vz6FzlAti+ggo/vbr68qmSyFcO27dFA+lyVVrCXzannVhNvybyJdwx/RS8YckEagaow6wDPMBB65GUqC9RDHs72Tg4lQt/B+en/VZ0npRVCbmCsHRVs/j2d+6BdaJlZfPSWDPFXMrZtPZc/IdDVhgff0UQo0Jv3rX+rp5MhlDEiiiQr/u4kUf+EnaFQUoT9iwg5LJsiIn77qyWwFA+KpLjvGgZkj0qAJT31eMEmiQeXwRE3PjAZPa4l8s8ohGWwOF41i+f8iSozhE+/BbbhUZNq3oICbOKJJeJR4eLJQBDcLHp5THWMBLQjfG0kqyKXzg+zKvBGDdcpkRmwx90rz3WOSNWh6//HvN0lLW0T6VB8Up9nnnzTaHf/DSHJtnkyjBCMhJCVOrgo3j2hxreTanZ9KCxoYxaArwCLl6aibuS3BLq1Zub0xp40QyiewgXPc0kZZgxyOaZnYJvDs48WFli9Csj5xngV2C4id080gz+gNRxjMJ5hHc+P+XCkTI+laDdqzPbJ8G+gzKLlpq41bx21OTvlj1DMsbrZp+eYu9IhnmZqMRzMRuI40K40RmasSV0e4AU=
-  file: build/libs/myakka.jar
-  skip_cleanup: true
-  on:
-    repo: DanySK/Courses---2018---Master-IoT-Example
-    tags: true
+  - provider: releases
+    api_key:
+        secure: FpedGUBOxQJk/UvbUK7znG6DgSnjf1lbick3CHEL7CktRCt3RTONdmC6tY5YeSFFqQY6uHGRvszV452UjA0+SBDUVLjIda6aPks38Vz6FzlAti+ggo/vbr68qmSyFcO27dFA+lyVVrCXzannVhNvybyJdwx/RS8YckEagaow6wDPMBB65GUqC9RDHs72Tg4lQt/B+en/VZ0npRVCbmCsHRVs/j2d+6BdaJlZfPSWDPFXMrZtPZc/IdDVhgff0UQo0Jv3rX+rp5MhlDEiiiQr/u4kUf+EnaFQUoT9iwg5LJsiIn77qyWwFA+KpLjvGgZkj0qAJT31eMEmiQeXwRE3PjAZPa4l8s8ohGWwOF41i+f8iSozhE+/BbbhUZNq3oICbOKJJeJR4eLJQBDcLHp5THWMBLQjfG0kqyKXzg+zKvBGDdcpkRmwx90rz3WOSNWh6//HvN0lLW0T6VB8Up9nnnzTaHf/DSHJtnkyjBCMhJCVOrgo3j2hxreTanZ9KCxoYxaArwCLl6aibuS3BLq1Zub0xp40QyiewgXPc0kZZgxyOaZnYJvDs48WFli9Csj5xngV2C4id080gz+gNRxjMJ5hHc+P+XCkTI+laDdqzPbJ8G+gzKLlpq41bx21OTvlj1DMsbrZp+eYu9IhnmZqMRzMRuI40K40RmasSV0e4AU=
+    file: build/libs/myakka.jar
+    skip_cleanup: true
+    on:
+      repo: DanySK/Courses---2018---Master-IoT-Example
+      tags: true
+  - provider: surge
+    project: build/reports/jacoco/test/html/
+    domain: bbs-iot-2018-coverage.surge.sh
+    skip_cleanup: true
+  - provider: surge
+    project: build/docs/javadoc/
+    domain: bbs-iot-2018-javadoc.surge.sh
+    skip_cleanup: true
