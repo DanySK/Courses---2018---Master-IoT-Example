@@ -1,5 +1,6 @@
 plugins {
     id 'java'
+    id 'jacoco'
 }
 
 repositories {
@@ -13,3 +14,5 @@ dependencies {
     testCompile 'com.typesafe.akka:akka-testkit_2.12:2.5.16'
     testCompile 'junit:junit:4.12'
 }
+
+defaultTasks 'clean', 'test', 'jacocoTestReport', 'javadoc'
