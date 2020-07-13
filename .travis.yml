@@ -30,3 +30,7 @@ deploy:
     project: build/docs/javadoc/
     domain: bbs-iot-2018-javadoc.surge.sh
     skip_cleanup: true
+
+notifications:
+  email:
+    on_success: never
